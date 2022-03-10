@@ -1,9 +1,15 @@
 import React from 'react'
-
-function FeedBackStats() {
+//calculate ratings average
+function FeedBackStats({feedback}) {
+  let average = feedback.reduce((acc,curr)=>{
+    return acc+curr.rating
+  },0)/feedback.length;
   return (
-    <div>Stats</div>
-  )
+    <div className="feedback-stats">
+      <h4>{feedback.length} Reviews</h4>
+      <h4>Average Rating:{isNaN(average)?0:average}</h4>
+      </div>
+    )
 }
 
 export default FeedBackStats
